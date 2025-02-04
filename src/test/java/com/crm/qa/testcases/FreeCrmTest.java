@@ -20,10 +20,11 @@ public class FreeCrmTest {
 
 	@BeforeMethod
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "/Users/naveenkhunteta/Downloads/chromedriver");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")
+				+ "/Downloads/chromedriver.exe");
 		driver = new ChromeDriver();
 		js = (JavascriptExecutor) driver;
-		driver.get("https://www.freecrm.com/index.html");
+		driver.get("https://www.freecrm.com");
 	}
 
 	@Test
@@ -54,7 +55,7 @@ public class FreeCrmTest {
 		// Use jQuery to add jquery-growl to the page
 		js.executeScript("$.getScript('https://the-internet.herokuapp.com/js/vendor/jquery.growl.js')");
 
-		// js.executeScript("$.getScript('/Users/NaveenKhunteta/Documents/workspace/Test/src/testcases/jquery.growl.js')");
+		// js.executeScript("$.getScript('/Users/jawad.khan/Documents/workspace/Test/src/testcases/jquery.growl.js')");
 
 		// Use jQuery to add jquery-growl styles to the page
 		js.executeScript("$('head').append('<link rel=\"stylesheet\" "
@@ -83,7 +84,7 @@ public class FreeCrmTest {
 		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		// now copy the screenshot to desired location using copyFile //method
 		FileUtils.copyFile(src, 
-				new File("/Users/NaveenKhunteta/Documents/MyPOMFramework/PageObjectModel/screenshots/" + fileName +".png"));
+				new File(System.getProperty("user.home") + "/Documents/MyPOMFramework/PageObjectModel/screenshots/" + fileName +".png"));
 
 	}
 
